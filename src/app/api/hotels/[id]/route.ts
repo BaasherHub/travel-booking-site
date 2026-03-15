@@ -3,9 +3,10 @@ import { MOCK_HOTELS } from '@/lib/mock-data'
 
 export async function GET(
   _request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const hotel = MOCK_HOTELS.find((h) => h.id === params.id)
+  const { id } = await params
+  const hotel = MOCK_HOTELS.find((h) => h.id === id)
 
   if (!hotel) {
     return NextResponse.json({ error: 'Hotel not found' }, { status: 404 })

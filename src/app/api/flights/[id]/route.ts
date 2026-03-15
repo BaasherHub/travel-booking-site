@@ -3,9 +3,10 @@ import { MOCK_FLIGHTS } from '@/lib/mock-data'
 
 export async function GET(
   _request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const flight = MOCK_FLIGHTS.find((f) => f.id === params.id)
+  const { id } = await params
+  const flight = MOCK_FLIGHTS.find((f) => f.id === id)
 
   if (!flight) {
     return NextResponse.json({ error: 'Flight not found' }, { status: 404 })
