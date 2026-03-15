@@ -25,8 +25,9 @@ export async function generateStaticParams() {
   return MOCK_HOTELS.map((h) => ({ id: h.id }))
 }
 
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
-  const hotel = MOCK_HOTELS.find((h) => h.id === params.id)
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params
+  const hotel = MOCK_HOTELS.find((h) => h.id === id)
   if (!hotel) return { title: 'Hotel Not Found' }
   return {
     title: `${hotel.name} — ${hotel.location}`,
@@ -34,8 +35,9 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
   }
 }
 
-export default function HotelDetailPage({ params }: { params: { id: string } }) {
-  const hotel = MOCK_HOTELS.find((h) => h.id === params.id)
+export default async function HotelDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
+  const hotel = MOCK_HOTELS.find((h) => h.id === id)
   if (!hotel) notFound()
 
   const gradients = [

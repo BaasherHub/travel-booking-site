@@ -12,8 +12,9 @@ export async function generateStaticParams() {
   return MOCK_FLIGHTS.map((f) => ({ id: f.id }))
 }
 
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
-  const flight = MOCK_FLIGHTS.find((f) => f.id === params.id)
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params
+  const flight = MOCK_FLIGHTS.find((f) => f.id === id)
   if (!flight) return { title: 'Flight Not Found' }
   return {
     title: `${flight.airline} ${flight.flightNumber} — ${flight.origin} to ${flight.destination}`,
@@ -21,8 +22,9 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
   }
 }
 
-export default function FlightDetailPage({ params }: { params: { id: string } }) {
-  const flight = MOCK_FLIGHTS.find((f) => f.id === params.id)
+export default async function FlightDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
+  const flight = MOCK_FLIGHTS.find((f) => f.id === id)
   if (!flight) notFound()
 
   const similarFlights = MOCK_FLIGHTS.filter((f) => f.id !== flight.id).slice(0, 3)
