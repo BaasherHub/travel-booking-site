@@ -121,13 +121,13 @@ export default function BookingPage() {
       })
 
       const data = await res.json()
-      const ref = data.data?.id?.slice(-8).toUpperCase() || Math.random().toString(36).slice(2, 10).toUpperCase()
+      const ref = data.data?.id?.slice(-8).toUpperCase() || 'CONFIRMED'
       setBookingRef(ref)
       setTotalPrice(price)
       setCurrentStep(3)
     } catch {
       setCurrentStep(3)
-      setBookingRef(Math.random().toString(36).slice(2, 10).toUpperCase())
+      setBookingRef('CONFIRMED')
       setTotalPrice(computeTotal())
     } finally {
       setLoading(false)

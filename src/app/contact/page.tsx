@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import type { Metadata } from 'next'
 import {
   Mail,
   Phone,
@@ -56,7 +55,7 @@ export default function ContactPage() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     setForm((prev) => ({ ...prev, [field]: e.target.value }))
-    if (errors[field]) setErrors((prev) => ({ ...prev, [field]: undefined as unknown as string }))
+    if (errors[field]) setErrors((prev) => { const { [field]: _, ...rest } = prev; return rest })
   }
 
   const validate = () => {

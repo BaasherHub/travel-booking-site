@@ -7,7 +7,6 @@ import Link from 'next/link'
 import { Eye, EyeOff, Plane, Mail, Lock, AlertCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import type { Metadata } from 'next'
 
 export default function LoginPage() {
   const router = useRouter()
