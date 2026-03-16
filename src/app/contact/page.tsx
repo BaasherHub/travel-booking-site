@@ -23,7 +23,7 @@ const faqs = [
       'Cancellations and changes depend on the fare rules of your ticket. Visit your Dashboard to view booking details and cancellation options. For tickets with free cancellation, you can cancel directly from your account. For other tickets, contact the airline or hotel directly.',
   },
   {
-    question: 'Are there hidden fees on SkyVoyager?',
+    question: 'Are there hidden fees on AlterTravel?',
     answer:
       'No hidden fees — ever. The price you see is the price you pay. We earn a small affiliate commission from airlines and hotels when you complete a booking, but this never affects the price you see.',
   },
@@ -232,10 +232,10 @@ export default function ContactPage() {
                   <div>
                     <p className="font-medium text-gray-700">Email</p>
                     <a
-                      href="mailto:support@skyvoyager.com"
+                      href="mailto:support@altertravel.com"
                       className="text-blue-600 hover:underline"
                     >
-                      support@skyvoyager.com
+                      support@altertravel.com
                     </a>
                   </div>
                 </div>

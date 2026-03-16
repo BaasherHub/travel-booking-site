@@ -10,27 +10,27 @@ import { BookingProvider } from '@/context/BookingContext'
 
 export const metadata: Metadata = {
   title: {
-    default: 'SkyVoyager — Find Flights & Hotels',
-    template: '%s | SkyVoyager',
+    default: 'AlterTravel — Find Flights & Hotels',
+    template: '%s | AlterTravel',
   },
   description:
-    'SkyVoyager helps you search and compare hundreds of flights and hotels worldwide. Find the best deals and book your perfect trip today.',
+    'AlterTravel helps you search and compare hundreds of flights and hotels worldwide. Find the best deals and book your perfect trip today.',
   keywords: ['flights', 'hotels', 'travel', 'booking', 'cheap flights', 'travel deals'],
-  authors: [{ name: 'SkyVoyager Team' }],
-  creator: 'SkyVoyager',
+  authors: [{ name: 'AlterTravel Team' }],
+  creator: 'AlterTravel',
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: process.env.NEXT_PUBLIC_APP_URL || 'https://skyvoyager.com',
-    title: 'SkyVoyager — Find Flights & Hotels',
+    url: process.env.NEXT_PUBLIC_APP_URL || 'https://altertravel.com',
+    title: 'AlterTravel — Find Flights & Hotels',
     description: 'Search and compare hundreds of flights and hotels. Book the best travel deals.',
-    siteName: 'SkyVoyager',
+    siteName: 'AlterTravel',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'SkyVoyager — Find Flights & Hotels',
+    title: 'AlterTravel — Find Flights & Hotels',
     description: 'Search and compare hundreds of flights and hotels worldwide.',
-    creator: '@skyvoyager',
+    creator: '@altertravel',
   },
   robots: {
     index: true,

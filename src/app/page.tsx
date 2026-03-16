@@ -7,7 +7,7 @@ import Testimonials from '@/components/home/Testimonials'
 import Newsletter from '@/components/home/Newsletter'
 
 export const metadata: Metadata = {
-  title: 'SkyVoyager — Find Your Perfect Trip',
+  title: 'AlterTravel — Find Your Perfect Trip',
   description:
     'Search and compare hundreds of flights and hotels worldwide. Find the best travel deals and book with confidence.',
 }

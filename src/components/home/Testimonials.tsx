@@ -8,7 +8,7 @@ export default function Testimonials() {
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-900">What Travelers Say</h2>
           <p className="mt-3 text-lg text-gray-500">
-            Join thousands of happy travelers who book with SkyVoyager
+            Join thousands of happy travelers who book with AlterTravel
           </p>
         </div>
 

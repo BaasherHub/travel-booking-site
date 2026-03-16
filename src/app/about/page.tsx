@@ -4,7 +4,7 @@ import { Plane, Users, Globe, Award, Heart, Zap, Shield, Star } from 'lucide-rea
 export const metadata: Metadata = {
   title: 'About Us',
   description:
-    'Learn about SkyVoyager — our mission to make travel accessible and enjoyable for everyone.',
+    'Learn about AlterTravel — our mission to make travel accessible and enjoyable for everyone.',
 }
 
 const stats = [
@@ -84,7 +84,7 @@ export default function AboutPage() {
             </div>
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-            About SkyVoyager
+            About AlterTravel
           </h1>
           <p className="text-xl text-blue-100 max-w-2xl mx-auto">
             We believe every journey should start with a great booking experience. Since 2020,
@@ -119,7 +119,7 @@ export default function AboutPage() {
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Story</h2>
             <div className="space-y-4 text-gray-600 leading-relaxed">
               <p>
-                SkyVoyager was born from frustration. Our founders, avid travelers themselves,
+                AlterTravel was born from frustration. Our founders, avid travelers themselves,
                 were tired of jumping between dozens of travel sites to compare prices, only to be
                 ambushed by hidden fees at checkout.
               </p>
@@ -129,7 +129,7 @@ export default function AboutPage() {
                 and hotels in one place.
               </p>
               <p>
-                Today, SkyVoyager helps over 100,000 travelers every month find and book their
+                Today, AlterTravel helps over 100,000 travelers every month find and book their
                 perfect trips. We&apos;re proud to be the travel companion people trust for their
                 adventures, from weekend city breaks to round-the-world journeys.
               </p>

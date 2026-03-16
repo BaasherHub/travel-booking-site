@@ -52,6 +52,16 @@ const config: Config = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        // AlterTravel brand colors
+        alter: {
+          blue: '#1E40AF',
+          'blue-mid': '#2563EB',
+          'blue-light': '#3B82F6',
+          gold: '#F59E0B',
+          'gold-light': '#FCD34D',
+          slate: '#64748B',
+          'slate-light': '#94A3B8',
+        },
       },
       borderRadius: {
         lg: 'var(--radius)',
