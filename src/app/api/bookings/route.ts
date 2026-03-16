@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
   }
 
   const body = await request.json()
-  const { type, details, totalPrice, currency } = body
+  const { type, details, totalPrice, currency, affiliateId, affiliateUrl, commission, commissionRate, referenceId, travelers, notes } = body
 
   if (!type || !details || !totalPrice) {
     return NextResponse.json(
@@ -39,10 +39,17 @@ export async function POST(request: NextRequest) {
     data: {
       userId: session.user.id,
       type,
-      status: 'confirmed',
+      status: 'pending',
       details,
       totalPrice,
       currency: currency || 'USD',
+      affiliateId: affiliateId || null,
+      affiliateUrl: affiliateUrl || null,
+      commission: commission || null,
+      commissionRate: commissionRate ?? 0.05,
+      referenceId: referenceId || null,
+      travelers: travelers || null,
+      notes: notes || null,
     },
   })
 

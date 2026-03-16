@@ -40,7 +40,7 @@ export default function WhyChooseUs() {
     <section className="py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900">Why Choose SkyVoyager?</h2>
+          <h2 className="text-3xl font-bold text-gray-900">Why Choose AlterTravel?</h2>
           <p className="mt-3 text-lg text-gray-500">
             Millions of travelers trust us to find and book the perfect trip
           </p>

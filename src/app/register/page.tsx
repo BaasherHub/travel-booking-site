@@ -90,7 +90,7 @@ export default function RegisterPage() {
               <Plane className="h-5 w-5 text-white" />
             </div>
             <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-              SkyVoyager
+              AlterTravel
             </span>
           </Link>
           <h1 className="mt-6 text-2xl font-bold text-gray-900">Create your account</h1>

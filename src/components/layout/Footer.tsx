@@ -9,10 +9,10 @@ export default function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-indigo-500">
+              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-blue-700">
                 <Plane className="h-5 w-5 text-white" />
               </div>
-              <span className="text-xl font-bold text-white">SkyVoyager</span>
+              <span className="text-xl font-bold text-white">AlterTravel</span>
             </Link>
             <p className="text-sm leading-relaxed">
               Your trusted travel partner for booking flights and hotels worldwide. Find the best
@@ -89,8 +89,8 @@ export default function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 flex-shrink-0" />
-                <a href="mailto:support@skyvoyager.com" className="hover:text-white transition-colors">
-                  support@skyvoyager.com
+                <a href="mailto:support@altertravel.com" className="hover:text-white transition-colors">
+                  support@altertravel.com
                 </a>
               </li>
               <li className="flex items-center gap-2">
@@ -109,7 +109,7 @@ export default function Footer() {
 
         <div className="mt-10 border-t border-gray-800 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-sm text-gray-500">
-            © {new Date().getFullYear()} SkyVoyager. All rights reserved.
+            © {new Date().getFullYear()} AlterTravel. All rights reserved.
           </p>
           <p className="text-xs text-gray-600">
             We earn commission from partner bookings. Prices include all taxes and fees.

@@ -1229,7 +1229,7 @@ export const TESTIMONIALS: Testimonial[] = [
     location: 'Los Angeles, CA',
     rating: 5,
     review:
-      "SkyVoyager saved me over $400 on my Paris trip! The interface is incredibly intuitive and I found the perfect hotel within minutes. Will definitely use again for my next adventure.",
+      "AlterTravel saved me over $400 on my Paris trip! The interface is incredibly intuitive and I found the perfect hotel within minutes. Will definitely use again for my next adventure.",
     tripType: 'Leisure - Paris',
     date: '2024-03-15',
   },
@@ -1251,7 +1251,7 @@ export const TESTIMONIALS: Testimonial[] = [
     location: 'London, UK',
     rating: 4,
     review:
-      "Booked our honeymoon to the Maldives through SkyVoyager. The hotel selection was outstanding and the price was the best we found anywhere. Truly a dream experience!",
+      "Booked our honeymoon to the Maldives through AlterTravel. The hotel selection was outstanding and the price was the best we found anywhere. Truly a dream experience!",
     tripType: 'Honeymoon - Maldives',
     date: '2024-01-20',
   },
@@ -1262,7 +1262,7 @@ export const TESTIMONIALS: Testimonial[] = [
     location: 'Miami, FL',
     rating: 5,
     review:
-      "I travel frequently for work and SkyVoyager has become my go-to booking platform. The saved searches feature and quick rebooking saves me so much time each week.",
+      "I travel frequently for work and AlterTravel has become my go-to booking platform. The saved searches feature and quick rebooking saves me so much time each week.",
     tripType: 'Business Travel',
     date: '2024-03-01',
   },

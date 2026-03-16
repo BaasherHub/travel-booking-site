@@ -1,140 +1,154 @@
-# ✈️ SkyVoyager — Travel Booking Site
+# ✈️ AlterTravel — Premium Affiliate Travel Booking Platform
 
-SkyVoyager is a full-stack travel booking web application built with Next.js 14. It lets users search and compare flights and hotels worldwide, manage bookings, and complete a multi-step checkout flow — all with a clean, modern UI.
+AlterTravel is a full-stack travel booking web application built with Next.js 14. Users can search and compare flights and hotels worldwide, and complete bookings through affiliate partner links — earning commission on every booking.
 
 ## ✨ Features
 
-- **Flight Search** — Search hundreds of flights by origin, destination, date, cabin class, and passenger count
-- **Hotel Search** — Browse hotels by city, check-in/check-out dates, and guest count
-- **Detail Pages** — Rich flight and hotel detail pages with pricing breakdown
-- **Multi-Step Booking** — Guided booking flow: traveler details → payment → confirmation
-- **User Authentication** — Email/password and Google OAuth sign-in via NextAuth.js
-- **User Dashboard** — View and manage all past bookings (flights & hotels)
-- **About & Contact** — Company story, team, FAQ accordion and contact form
-- **SEO Ready** — Metadata on all pages with Open Graph and Twitter card support
-- **Responsive** — Fully mobile-responsive design using Tailwind CSS
+- **Flight Search** — Search hundreds of airlines with real-time pricing via Amadeus API (mock data fallback)
+- **Hotel Search** — Browse 200,000+ hotels worldwide via Travelpayouts API (mock data fallback)
+- **Affiliate Booking Flow** — Instead of direct payment, users are redirected to affiliate partners (Amadeus, Booking.com, Expedia) so you earn commission on every booking
+- **Commission Tracking** — Each booking records estimated commission amount and affiliate URL
+- **User Authentication** — Email/password + Google OAuth via NextAuth
+- **User Dashboard** — View and manage personal bookings
+- **Admin Dashboard** — Overview stats, bookings table with status management, commission tracking
+- **Responsive Design** — Mobile-first UI with AlterTravel premium design system
 
 ## 🛠️ Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Framework | [Next.js 14](https://nextjs.org/) (App Router) |
-| Language | TypeScript |
-| Styling | [Tailwind CSS](https://tailwindcss.com/) + [Radix UI](https://www.radix-ui.com/) |
-| Database | PostgreSQL via [Prisma ORM](https://www.prisma.io/) |
-| Auth | [NextAuth.js v4](https://next-auth.js.org/) |
-| Icons | [Lucide React](https://lucide.dev/) |
-| Validation | [Zod](https://zod.dev/) |
-| Deployment | [Railway](https://railway.app/) |
-
-## 📸 Screenshots
-
-> _Add screenshots here_
+- **Framework**: Next.js 14 (App Router) + TypeScript
+- **Database**: PostgreSQL + Prisma ORM
+- **Auth**: NextAuth.js (Credentials + Google OAuth)
+- **Styling**: Tailwind CSS + Radix UI components
+- **APIs**: Amadeus API, Travelpayouts API (with mock data fallback)
+- **Deployment**: Railway (Docker + railway.toml)
 
 ## 🚀 Getting Started
 
-### Prerequisites
-
-- Node.js 18+
-- PostgreSQL database (or use Railway)
-- `npm` or `yarn`
-
-### Installation
+### 1. Clone & Install
 
 ```bash
-# 1. Clone the repository
-git clone https://github.com/BaasherHub/travel-booking-site.git
+git clone https://github.com/BaasherHub/travel-booking-site
 cd travel-booking-site
-
-# 2. Install dependencies
 npm install
+```
 
-# 3. Copy the environment variables
-cp .env.example .env.local
+### 2. Configure Environment Variables
 
-# 4. Edit .env.local with your values (see below)
+```bash
+cp .env.example .env
+```
 
-# 5. Push the Prisma schema to your database
+Edit `.env` and fill in:
+
+| Variable | Description |
+|---|---|
+| `DATABASE_URL` | PostgreSQL connection string |
+| `NEXTAUTH_SECRET` | Random secret — run `openssl rand -base64 32` |
+| `NEXTAUTH_URL` | Your app URL (e.g., `http://localhost:3000`) |
+| `NEXT_PUBLIC_APP_URL` | Same as `NEXTAUTH_URL` |
+| `ADMIN_EMAILS` | Comma-separated admin emails |
+| `GOOGLE_CLIENT_ID` | Google OAuth (optional) |
+| `GOOGLE_CLIENT_SECRET` | Google OAuth (optional) |
+| `AMADEUS_API_KEY` | Amadeus flight API (optional) |
+| `AMADEUS_API_SECRET` | Amadeus flight API (optional) |
+| `TRAVELPAYOUTS_TOKEN` | Travelpayouts API (optional) |
+| `TRAVELPAYOUTS_MARKER` | Travelpayouts affiliate marker (optional) |
+| `BOOKING_COM_AID` | Booking.com affiliate ID (optional) |
+| `EXPEDIA_AFFILIATE_ID` | Expedia affiliate ID (optional) |
+
+> **Note:** The app works fully with mock data when API keys are not provided.
+
+### 3. Initialize Database
+
+```bash
 npx prisma db push
+# or for production migrations:
+npx prisma migrate dev --name init
+```
 
-# 6. Start the development server
+### 4. Run Development Server
+
+```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open [http://localhost:3000](http://localhost:3000)
 
-## 🔑 Environment Variables
+## 🚂 Railway Deployment
 
-Copy `.env.example` to `.env.local` and fill in the values:
-
-| Variable | Description | Required |
-|---|---|---|
-| `DATABASE_URL` | PostgreSQL connection string | ✅ |
-| `NEXTAUTH_SECRET` | Random secret for NextAuth (generate with `openssl rand -base64 32`) | ✅ |
-| `NEXTAUTH_URL` | Full URL of your app (e.g. `http://localhost:3000`) | ✅ |
-| `GOOGLE_CLIENT_ID` | Google OAuth client ID | Optional |
-| `GOOGLE_CLIENT_SECRET` | Google OAuth client secret | Optional |
-| `AMADEUS_API_KEY` | Amadeus flight search API key | Optional |
-| `AMADEUS_API_SECRET` | Amadeus flight search API secret | Optional |
-| `TRAVELPAYOUTS_TOKEN` | Travelpayouts API token | Optional |
-| `TRAVELPAYOUTS_MARKER` | Travelpayouts affiliate marker | Optional |
-| `NEXT_PUBLIC_APP_URL` | Public app URL for Open Graph metadata | Optional |
-
-> **Note:** The app works fully with mock data when API keys are not provided.
+1. Go to [railway.app](https://railway.app) → **New Project** → **Deploy from GitHub Repo**
+2. Select `BaasherHub/travel-booking-site`
+3. Add a **PostgreSQL** plugin (Railway auto-sets `DATABASE_URL`)
+4. Set environment variables in Railway dashboard:
+   - `NEXTAUTH_SECRET` — `openssl rand -base64 32`
+   - `NEXTAUTH_URL` — your Railway URL (e.g., `https://your-app.up.railway.app`)
+   - `NEXT_PUBLIC_APP_URL` — same as `NEXTAUTH_URL`
+   - `ADMIN_EMAILS` — your admin email(s)
+5. Generate a public domain: Settings → Networking → Generate Domain
+6. Railway auto-builds using `Dockerfile`, runs `prisma db push`, and starts the server
 
 ## 📁 Project Structure
 
 ```
 src/
-├── app/                   # Next.js App Router pages & API routes
-│   ├── api/
-│   │   ├── auth/
-│   │   │   ├── [...nextauth]/  # NextAuth handler
-│   │   │   └── register/       # User registration endpoint
-│   │   ├── flights/            # Flight search & detail API
-│   │   ├── hotels/             # Hotel search & detail API
-│   │   └── bookings/           # Bookings CRUD API (auth-protected)
-│   ├── about/             # About page
-│   ├── booking/           # Multi-step booking flow
-│   ├── contact/           # Contact page with FAQ
-│   ├── dashboard/         # Protected user dashboard
-│   ├── flights/           # Flight search + detail pages
-│   ├── hotels/            # Hotel search + detail pages
-│   ├── login/             # Sign-in page
-│   └── register/          # Registration page
-├── components/
-│   ├── booking/           # BookingForm, PaymentForm, BookingSummary
-│   ├── flights/           # FlightCard, FlightList, FlightFilters, FlightSearchForm
-│   ├── hotels/            # HotelCard, HotelList, HotelFilters, HotelSearchForm
-│   ├── home/              # Landing page sections
-│   ├── layout/            # Navbar, Footer
-│   ├── shared/            # Shared components (ErrorMessage, StarRating, etc.)
-│   └── ui/                # Base UI primitives (Button, Card, Badge, Input, etc.)
-├── context/               # React context (SearchContext, BookingContext)
-├── hooks/                 # Custom hooks (useFlightSearch, useHotelSearch)
-├── lib/
-│   ├── api/               # External API clients (Amadeus, Travelpayouts)
-│   ├── auth.ts            # NextAuth configuration
-│   ├── mock-data.ts       # Mock flight, hotel & booking data
-│   ├── prisma.ts          # Prisma client singleton
-│   └── utils.ts           # Utility functions (formatPrice, formatDate, etc.)
-└── types/                 # TypeScript type definitions
+  app/
+    api/
+      auth/[...nextauth]/    # NextAuth handler
+      auth/register/         # User registration
+      flights/               # Flight search + details
+      hotels/                # Hotel search + details
+      bookings/              # Booking CRUD + [id] route
+      admin/stats/           # Admin stats endpoint
+      admin/bookings/        # Admin bookings management
+      health/                # Railway healthcheck
+    about/                   # About AlterTravel
+    admin/                   # Admin dashboard
+    booking/                 # Booking flow
+    contact/                 # Contact page
+    dashboard/               # User dashboard
+    flights/[id]/            # Flight detail page
+    hotels/[id]/             # Hotel detail page
+    login/                   # Login page
+    register/                # Registration page
+  components/
+    booking/                 # BookingForm, BookingSummary, PaymentForm
+    flights/                 # FlightCard, FlightFilters, FlightSearchForm
+    hotels/                  # HotelCard, HotelFilters, HotelSearchForm
+    home/                    # HeroSection, WhyChooseUs, Testimonials, etc.
+    layout/                  # Navbar, Footer
+    shared/                  # Reusable UI components
+    ui/                      # Radix UI component wrappers
+  lib/
+    api/                     # Amadeus + Travelpayouts API clients
+    auth.ts                  # NextAuth config
+    constants.ts             # App constants
+    mock-data.ts             # Mock flights/hotels/destinations
+    prisma.ts                # Prisma client
+    utils.ts                 # Utility functions
 ```
 
-## 🚢 Deployment (Railway)
+## 💰 Affiliate Integration
 
-The project is pre-configured for Railway deployment:
+AlterTravel uses an affiliate model instead of direct payments:
 
-1. Push your code to GitHub
-2. Create a new project on [Railway](https://railway.app/)
-3. Add a **PostgreSQL** plugin to your project
-4. Connect your GitHub repository
-5. Set the environment variables in the Railway dashboard
-6. Railway will automatically build and deploy using the `Dockerfile`
+1. User searches for flights/hotels
+2. User selects a result and views the booking summary
+3. **"Book via Partner"** button opens the affiliate partner URL in a new tab
+4. A booking record is created with `status: "pending"` and estimated commission
+5. Admin dashboard shows all bookings and commission tracking
 
-The `railway.toml` and `Dockerfile` are already included in the repository.
+Affiliate links are generated using:
+- **Amadeus**: Deep-link flight booking URLs
+- **Travelpayouts**: Marker-based affiliate URLs
+- **Booking.com**: AID-based hotel booking URLs
+- **Expedia**: Affiliate ID-based hotel booking URLs
 
-## 📄 License
+## 🔐 Admin Access
 
-MIT
+Set `ADMIN_EMAILS` environment variable to a comma-separated list of admin email addresses:
 
+```
+ADMIN_EMAILS="admin@altertravel.com,you@example.com"
+```
+
+Admin dashboard is available at `/admin` (only accessible to listed emails).
