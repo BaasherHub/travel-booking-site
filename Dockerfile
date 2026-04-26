@@ -8,7 +8,17 @@ WORKDIR /app
 COPY package.json package-lock.json* ./
 # Schema needed for postinstall: prisma generate
 COPY prisma ./prisma/
-RUN npm ci
+# Clear diagnostics when the lock is invalid; npm@10+ fails fast with a cryptic "Invalid" line otherwise.
+SHELL ["/bin/bash", "-c"]
+RUN if ! npm ci; then \
+  echo ""; \
+  echo "=== npm ci failed (EUSAGE) — usually means package.json, package-lock.json, or overrides disagreed at install time. ===" >&2; \
+  echo "Local fix: rm -rf node_modules package-lock.json && npm install && npx npm@10.8.2 ci  # match Node 20 / npm 10" >&2; \
+  echo "=== Top mismatched deps (npm explain): ===" >&2; \
+  npm explain picomatch 2>&1 | head -60 || true; \
+  echo "===" >&2; \
+  exit 1; \
+fi
 
 FROM base AS builder
 RUN apt-get update -y && apt-get install -y --no-install-recommends openssl ca-certificates && rm -rf /var/lib/apt/lists/*
